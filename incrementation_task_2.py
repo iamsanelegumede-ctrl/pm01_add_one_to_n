@@ -1,17 +1,27 @@
 def climb_stairs(N, stairs):
-    # Create an empty list to store the steps taken
     steps = []
-    previous = 0
-    # Repeat until all stairs have been climbed
+    last_step = 0
+
     while stairs > 0:
-        for step in [1, 2, 3]:
-            if step != previous and step <= stairs:
-                # Add the step to the list
-                steps.append(step)
-                stairs = stairs - step
-                previous = step
-                # Exit the for loop and continue climbing
-                break
+
+        if last_step != 1 and stairs >= 1:
+            steps.append(1)
+            stairs = stairs - 1
+            last_step = 1
+
+        elif last_step != 2 and stairs >= 2:
+            steps.append(2)
+            stairs = stairs - 2
+            last_step = 2
+
+        elif last_step != 3 and stairs >= 3:
+            steps.append(3)
+            stairs = stairs - 3
+            last_step = 3
+
+        else:
+            break
+
     return steps
 
-print(climb_stairs(3, 7))
+print(climb_stairs(3, 5))
